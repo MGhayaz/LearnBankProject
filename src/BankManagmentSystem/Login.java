@@ -7,7 +7,7 @@ import java.awt.event.*;
 public class Login extends JFrame implements ActionListener {
 
 
-    JButton Clear , SignUp , signIn ;
+    JButton Clear , SignIn, signUp;
     JTextField cardFeild;
     JPasswordField pinFeild;
     public Login() {
@@ -56,26 +56,26 @@ public class Login extends JFrame implements ActionListener {
         Clear.addActionListener(this);
         add(Clear);
 
-         SignUp = new JButton("SIGN UP");
-        SignUp.setBounds(360, 260, 80, 25);
-        SignUp.setBackground(Color.BLACK);
-        SignUp.setForeground(Color.WHITE);
-        SignUp.addActionListener(this);
-        add(SignUp);
+         SignIn = new JButton("SIGN IN");
+        SignIn.setBounds(360, 260, 80, 25);
+        SignIn.setBackground(Color.BLACK);
+        SignIn.setForeground(Color.WHITE);
+        SignIn.addActionListener(this);
+        add(SignIn);
 
-         signIn = new JButton("SIGN IN");
-        signIn.setBounds(260, 300, 180, 25);
-        signIn.setBackground(Color.BLACK);
-        signIn.setForeground(Color.WHITE);
-        signIn.addActionListener(this);
-        add(signIn);
+         signUp = new JButton("SIGN UP");
+        signUp.setBounds(260, 300, 180, 25);
+        signUp.setBackground(Color.BLACK);
+        signUp.setForeground(Color.WHITE);
+        signUp.addActionListener(this);
+        add(signUp);
 
 
         // Frame Settings
         getContentPane().setBackground(Color.white);
         setSize(800, 480);
         setVisible(true);
-        setLocation(350, 200);
+        setLocation(600, 80);
     }
 
     @Override
@@ -83,10 +83,13 @@ public class Login extends JFrame implements ActionListener {
         if(e.getSource() == Clear) {
             cardFeild.setText("");
             pinFeild.setText("");
-        } else if (e.getSource() == SignUp){
+        } else if (e.getSource() == signUp){
+            setVisible(false);
+            new SignUp().setVisible(true);
 
         }
-        else if (e.getSource() == signIn){
+        else if (e.getSource() == SignIn){
+
 
         }
 

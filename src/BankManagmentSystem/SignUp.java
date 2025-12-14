@@ -10,11 +10,13 @@ import com.toedter.calendar.JDateChooser;
 public class SignUp extends JFrame implements ActionListener {
 
     int random;
-    JTextField nameField , fathersnameField, emailField , addressField , cityFeild , stateField ,pincodeFeild;
+    JTextField nameField, fathersnameField, emailField, addressField, cityFeild, stateField, pincodeFeild;
     JDateChooser DOBFeild;
-    JRadioButton male ,female, othergender, Married , UnMarried, otherMaternityStatus;
-    JButton nextButton;
+    JRadioButton male, female, othergender, Married, UnMarried, otherMaternityStatus;
+    JButton nextButton , previousButton;
+
     public SignUp() {
+        setTitle("Ghayaz Finance Pvt Ltd. - Personal Details");
 
         JLabel brandName = new JLabel("GHAYAZ Finance Pvt Ltd.");
         brandName.setBounds(230, 40, 600, 40);
@@ -172,25 +174,34 @@ public class SignUp extends JFrame implements ActionListener {
 
         // next button
         nextButton = new JButton("Next");
-        nextButton.setBounds(590, 710, 80, 35);
+        nextButton.setBounds(590, 710, 90, 35);
         nextButton.setForeground(Color.WHITE);
         nextButton.setBackground(Color.BLACK);
         nextButton.addActionListener(this);
         add(nextButton);
 
+
+        // back to login page button
+        previousButton = new JButton("Previous");
+        previousButton.setBounds(250, 710, 90, 35);
+        previousButton.setForeground(Color.WHITE);
+        previousButton.setBackground(Color.BLACK);
+        previousButton.addActionListener(this);
+        add(previousButton);
+
         setSize(850, 800);
         setLocation(600, 80);
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
-        setVisible(true);
+//        setVisible(true);
 
     }
-
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        if (e.getSource() == nextButton) {
             String name = nameField.getText();
             String Fathername = fathersnameField.getText();
             String address = addressField.getText();
@@ -200,26 +211,49 @@ public class SignUp extends JFrame implements ActionListener {
             String Pincode = pincodeFeild.getText();
             String email = emailField.getText();
 
-            String gender = null;
-            if(male.isSelected()){gender = "Male";}
-            else if (female.isSelected()){gender = "Female";}
-            else if (othergender.isSelected()) {gender = "Other";}
+            String Gender = null;
+            if (male.isSelected()) {
+                Gender = "Male";
+            } else if (female.isSelected()) {
+                Gender = "Female";
+            } else if (othergender.isSelected()) {
+                Gender = "Other";
+            }
 
             String MaritalStatus = null;
-            if(Married.isSelected()){MaritalStatus = "Married";}
-            else if (UnMarried.isSelected()){MaritalStatus = "Unmarried";}
-            else if(otherMaternityStatus.isSelected()){MaritalStatus = "Other";}
-
-
-
-        try{
-            if(name.equals("") || Fathername.equals("") || address.equals("")|| DOB.equals("")|| City.equals("")|| State.equals("") || Pincode.equals("") || email.equals("") || gender == null || MaritalStatus ==null){
-                JOptionPane.showMessageDialog(null, "Please Enter Required Feilds");
+            if (Married.isSelected()) {
+                MaritalStatus = "Married";
+            } else if (UnMarried.isSelected()) {
+                MaritalStatus = "Unmarried";
+            } else if (otherMaternityStatus.isSelected()) {
+                MaritalStatus = "Other";
             }
-        } catch(Exception ee){
-            System.out.println(ee.getMessage());
+
+
+            try {
+                if (name.equals("") || Fathername.equals("") || address.equals("") || DOB.equals("") || City.equals("")
+                        || State.equals("") || Pincode.equals("") || email.equals("") || Gender == null
+                        || MaritalStatus == null) {
+                    JOptionPane.showMessageDialog(null, "Please Enter Required Fields");
+                }
+                else {
+                    DataBaseConnection dbc = new DataBaseConnection();
+                    String Query = "insert into signUp values('"+random+"','"+name+"','"+Fathername+"','"+address+"'," +
+                            "'"+DOB+"','"+City+"','"+State+"','"+Pincode+"','"+email+"','"+Gender+"','"+MaritalStatus+"')";
+                    dbc.st.executeUpdate(Query); // dml command
+                }
+            } catch (Exception ee) {
+                System.out.println(ee.getMessage());
+            }
+        } else if(e.getSource() == previousButton) {
+            setVisible(false);
+            new Login().setVisible(true);
+
         }
+
+
     }
+
     public static void main(String[] args) {
         new SignUp();
 

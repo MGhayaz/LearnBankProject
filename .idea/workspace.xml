@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2c3962a-6260-4cd4-821e-777839587866" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/BankManagmentSystem/DataBaseConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BankManagmentSystem/SignUp2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankManagmentSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BankManagmentSystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankManagmentSystem/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankManagmentSystem/SignUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankManagmentSystem/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankManagmentSystem/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankManagmentSystem/SignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankManagmentSystem/SignUp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +34,7 @@
   "keyToString": {
     "Application.Login.executor": "Run",
     "Application.SignUp.executor": "Run",
+    "Application.SignUp2.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
