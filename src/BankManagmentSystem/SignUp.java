@@ -1,10 +1,19 @@
+package BankManagmentSystem;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import com.toedter.calendar.JDateChooser;
 
-public class SignUp extends JFrame {
+public class SignUp extends JFrame implements ActionListener {
 
-
+    int random;
+    JTextField nameField , fathersnameField, emailField , addressField , cityFeild , stateField ,pincodeFeild;
+    JDateChooser DOBFeild;
+    JRadioButton male ,female, othergender, Married , UnMarried, otherMaternityStatus;
+    JButton nextButton;
     public SignUp() {
 
         JLabel brandName = new JLabel("GHAYAZ Finance Pvt Ltd.");
@@ -14,16 +23,16 @@ public class SignUp extends JFrame {
 
 
         //Application
-        int random = (int) Math.round(Math.random() * 10000);
+        random = (int) Math.round(Math.random() * 10000);
         JLabel frc = new JLabel("APPLICATION FORM NO: " + random);
         frc.setBounds(90, 100, 600, 40);
         frc.setFont(new Font("Raleway", Font.BOLD, 28));
         add(frc);
 
         // application page
-        JLabel personal = new JLabel("Page 1 : Personal Details: ");
+        JLabel personal = new JLabel("Page 1 : Personal Details");
         personal.setBounds(90, 150, 300, 30);
-        personal.setFont(new Font("Raleway", Font.BOLD, 24));
+        personal.setFont(new Font("Raleway", Font.PLAIN, 24));
         add(personal);
         // name
         JLabel name = new JLabel("Name :");
@@ -31,7 +40,7 @@ public class SignUp extends JFrame {
         name.setFont(new Font("Raleway", Font.BOLD, 18));
         add(name);
 
-        JTextField nameField = new JTextField();
+        nameField = new JTextField();
         nameField.setBounds(250, 220, 400, 25);
         nameField.setFont(new Font("Raleway", Font.BOLD, 14));
         add(nameField);
@@ -40,7 +49,7 @@ public class SignUp extends JFrame {
         fathersName.setBounds(90, 270, 140, 25);
         fathersName.setFont(new Font("Raleway", Font.BOLD, 18));
         add(fathersName);
-        JTextField fathersnameField = new JTextField();
+        fathersnameField = new JTextField();
         fathersnameField.setBounds(250, 270, 400, 25);
         fathersnameField.setFont(new Font("Raleway", Font.BOLD, 14));
         add(fathersnameField);
@@ -50,7 +59,7 @@ public class SignUp extends JFrame {
         DOB.setFont(new Font("Raleway", Font.BOLD, 18));
         add(DOB);
 
-        JDateChooser DOBFeild = new JDateChooser();
+        DOBFeild = new JDateChooser();
         DOBFeild.setBounds(250, 320, 400, 25);
         DOBFeild.setForeground(Color.BLACK);
         add(DOBFeild);
@@ -60,25 +69,25 @@ public class SignUp extends JFrame {
         Gender.setFont(new Font("Raleway", Font.BOLD, 18));
         add(Gender);
 
-        JRadioButton male = new JRadioButton("MALE");
+        male = new JRadioButton("MALE");
         male.setBounds(250, 370, 80, 25);
         male.setForeground(Color.BLACK);
         male.setBackground(Color.WHITE);
-        male.setFont(new Font("Raleway",Font.PLAIN, 18));
+        male.setFont(new Font("Raleway", Font.PLAIN, 18));
         add(male);
 
-        JRadioButton female = new JRadioButton("FEMALE");
+        female = new JRadioButton("FEMALE");
         female.setBounds(370, 370, 100, 25);
         female.setForeground(Color.BLACK);
         female.setBackground(Color.WHITE);
-        female.setFont(new Font("Raleway",Font.PLAIN, 18));
+        female.setFont(new Font("Raleway", Font.PLAIN, 18));
         add(female);
 
-        JRadioButton othergender = new JRadioButton("OTHER");
+        othergender = new JRadioButton("OTHER");
         othergender.setBounds(500, 370, 90, 25);
         othergender.setForeground(Color.BLACK);
         othergender.setBackground(Color.WHITE);
-        othergender.setFont(new Font("Raleway",Font.PLAIN, 18));
+        othergender.setFont(new Font("Raleway", Font.PLAIN, 18));
         add(othergender);
 
         ButtonGroup buttonGroup = new ButtonGroup();
@@ -90,7 +99,7 @@ public class SignUp extends JFrame {
         Email.setBounds(90, 420, 150, 25);
         Email.setFont(new Font("Raleway", Font.BOLD, 18));
         add(Email);
-        JTextField emailField = new JTextField();
+        emailField = new JTextField();
         emailField.setBounds(250, 420, 400, 25);
         emailField.setFont(new Font("Raleway", Font.BOLD, 14));
         add(emailField);
@@ -99,24 +108,24 @@ public class SignUp extends JFrame {
         Maternity.setBounds(90, 470, 140, 25);
         Maternity.setFont(new Font("Raleway", Font.BOLD, 18));
         add(Maternity);
-        JRadioButton Married = new JRadioButton("MARRIED");
+        Married = new JRadioButton("MARRIED");
         Married.setBounds(250, 470, 120, 25);
         Married.setForeground(Color.BLACK);
         Married.setBackground(Color.WHITE);
-        Married.setFont(new Font("Raleway",Font.PLAIN, 18));
+        Married.setFont(new Font("Raleway", Font.PLAIN, 18));
         add(Married);
 
-        JRadioButton UnMarried = new JRadioButton("UNMARRIED");
+        UnMarried = new JRadioButton("UNMARRIED");
         UnMarried.setBounds(370, 470, 140, 25);
         UnMarried.setForeground(Color.BLACK);
         UnMarried.setBackground(Color.WHITE);
-        UnMarried.setFont(new Font("Raleway",Font.PLAIN, 18));
+        UnMarried.setFont(new Font("Raleway", Font.PLAIN, 18));
         add(UnMarried);
-        JRadioButton otherMaternityStatus = new JRadioButton("OTHER");
+        otherMaternityStatus = new JRadioButton("OTHER");
         otherMaternityStatus.setBounds(520, 470, 90, 25);
         otherMaternityStatus.setForeground(Color.BLACK);
         otherMaternityStatus.setBackground(Color.WHITE);
-        otherMaternityStatus.setFont(new Font("Raleway",Font.PLAIN, 18));
+        otherMaternityStatus.setFont(new Font("Raleway", Font.PLAIN, 18));
         add(otherMaternityStatus);
 
         ButtonGroup MaritalbuttonGroup = new ButtonGroup();
@@ -128,7 +137,7 @@ public class SignUp extends JFrame {
         Address.setBounds(90, 520, 80, 25);
         Address.setFont(new Font("Raleway", Font.BOLD, 18));
         add(Address);
-        JTextField addressField = new JTextField();
+        addressField = new JTextField();
         addressField.setBounds(250, 520, 400, 25);
         addressField.setFont(new Font("Raleway", Font.BOLD, 14));
         add(addressField);
@@ -137,7 +146,7 @@ public class SignUp extends JFrame {
         City.setBounds(90, 570, 60, 25);
         City.setFont(new Font("Raleway", Font.BOLD, 18));
         add(City);
-        JTextField cityFeild = new JTextField();
+        cityFeild = new JTextField();
         cityFeild.setBounds(250, 570, 400, 25);
         cityFeild.setFont(new Font("Raleway", Font.BOLD, 14));
         add(cityFeild);
@@ -146,19 +155,28 @@ public class SignUp extends JFrame {
         State.setBounds(90, 620, 70, 25);
         State.setFont(new Font("Raleway", Font.BOLD, 18));
         add(State);
-        JTextField stateFeild = new JTextField();
-        stateFeild.setBounds(250, 620, 400, 25);
-        stateFeild.setFont(new Font("Raleway", Font.BOLD, 14));
-        add(stateFeild);
+        stateField = new JTextField();
+        stateField.setBounds(250, 620, 400, 25);
+        stateField.setFont(new Font("Raleway", Font.BOLD, 14));
+        add(stateField);
         //pincode
         JLabel PinCode = new JLabel("Area PinCode:");
         PinCode.setBounds(90, 670, 140, 25);
         PinCode.setFont(new Font("Raleway", Font.BOLD, 18));
         add(PinCode);
-        JTextField pincodeFeild = new JTextField();
+        pincodeFeild = new JTextField();
         pincodeFeild.setBounds(250, 670, 400, 25);
         pincodeFeild.setFont(new Font("Raleway", Font.BOLD, 14));
         add(pincodeFeild);
+
+
+        // next button
+        nextButton = new JButton("Next");
+        nextButton.setBounds(590, 710, 80, 35);
+        nextButton.setForeground(Color.WHITE);
+        nextButton.setBackground(Color.BLACK);
+        nextButton.addActionListener(this);
+        add(nextButton);
 
         setSize(850, 800);
         setLocation(600, 80);
@@ -168,6 +186,40 @@ public class SignUp extends JFrame {
 
     }
 
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+            String name = nameField.getText();
+            String Fathername = fathersnameField.getText();
+            String address = addressField.getText();
+            String DOB = ((JTextField) DOBFeild.getDateEditor().getUiComponent()).getText();
+            String City = cityFeild.getText();
+            String State = (stateField.getText());
+            String Pincode = pincodeFeild.getText();
+            String email = emailField.getText();
+
+            String gender = null;
+            if(male.isSelected()){gender = "Male";}
+            else if (female.isSelected()){gender = "Female";}
+            else if (othergender.isSelected()) {gender = "Other";}
+
+            String MaritalStatus = null;
+            if(Married.isSelected()){MaritalStatus = "Married";}
+            else if (UnMarried.isSelected()){MaritalStatus = "Unmarried";}
+            else if(otherMaternityStatus.isSelected()){MaritalStatus = "Other";}
+
+
+
+        try{
+            if(name.equals("") || Fathername.equals("") || address.equals("")|| DOB.equals("")|| City.equals("")|| State.equals("") || Pincode.equals("") || email.equals("") || gender == null || MaritalStatus ==null){
+                JOptionPane.showMessageDialog(null, "Please Enter Required Feilds");
+            }
+        } catch(Exception ee){
+            System.out.println(ee.getMessage());
+        }
+    }
     public static void main(String[] args) {
         new SignUp();
 
