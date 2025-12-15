@@ -232,7 +232,7 @@ public class SignUp2 extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new SignUp2( random);
+        new SignUp2(random);
     }
 
     @Override
@@ -265,17 +265,16 @@ public class SignUp2 extends JFrame implements ActionListener {
 
 
             try {
-                if(sAdhaar.equals("")||sPan.equals("")){
+                if (sAdhaar.equals("") || sPan.equals("")) {
                     JOptionPane.showMessageDialog(null, "Please Enter Required Fields");
-                }
-                else{
+                } else {
                     DataBaseConnection dbc = new DataBaseConnection();
-                    String Query = "insert into signUpTwo values('"+srandom+"','"+sreligion+"','"+scategory+"','"+sincome+"'," +
-                            "'"+seducation+"','"+sOccupation+"','"+sPan+"','"+sAdhaar+"','"+seniorcitizen+"','"+existingcustomer+"')";
+                    String Query = "insert into signUpTwo values('" + srandom + "','" + sreligion + "','" + scategory + "','" + sincome + "'," +
+                            "'" + seducation + "','" + sOccupation + "','" + sPan + "','" + sAdhaar + "','" + seniorcitizen + "','" + existingcustomer + "')";
                     dbc.st.executeUpdate(Query);
                 }
 
-            }  catch (Exception ee) {
+            } catch (Exception ee) {
                 System.out.println(ee.getMessage());
             }
 
