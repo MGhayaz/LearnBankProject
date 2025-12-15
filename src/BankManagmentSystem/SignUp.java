@@ -241,6 +241,10 @@ public class SignUp extends JFrame implements ActionListener {
                     String Query = "insert into signUp values('"+random+"','"+name+"','"+Fathername+"','"+address+"'," +
                             "'"+DOB+"','"+City+"','"+State+"','"+Pincode+"','"+email+"','"+Gender+"','"+MaritalStatus+"')";
                     dbc.st.executeUpdate(Query); // dml command
+
+
+                    setVisible(false);
+                    new SignUp2(random).setVisible(true);
                 }
             } catch (Exception ee) {
                 System.out.println(ee.getMessage());

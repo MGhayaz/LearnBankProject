@@ -4,16 +4,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class SignUp2 extends JFrame implements ActionListener {
 
-    JLabel Religion, Category, Income, Occupation, PANCard, AdhaarCard, EducationQualification, SeniorCitizen,existingcustomer;
-    JComboBox ReligionField, CategoryField, IncomeField, OccupationField,EducationQualificationField;
-    JRadioButton existingcustomerYes, existingcustomerNO,   seniorcitizenYes,seniorcitizenNo;
+    JLabel Religion, Category, Income, Occupation, PANCard, AdhaarCard, EducationQualification, SeniorCitizen, existingcustomer;
+    JComboBox ReligionField, CategoryField, IncomeField, OccupationField, EducationQualificationField;
+    JRadioButton existingcustomerYes, existingcustomerNO, seniorcitizenYes, seniorcitizenNo;
     JTextField PANCardField, AdhaarCardField;
-    JButton nextButton , previousButton;
+    JButton nextButton, previousButton;
+    static int random;
 
-    public SignUp2() {
+    public SignUp2(int random) {
+        this.random = random;
         setTitle("Ghayaz Finance Pvt Ltd. - Additional Details ");
 
         JLabel personal = new JLabel("Page 2 : Additional Details");
@@ -203,7 +206,6 @@ public class SignUp2 extends JFrame implements ActionListener {
         ExistingCustomerButtonGroup.add(existingcustomerNO);
 
 
-
         // next button
         nextButton = new JButton("Next");
         nextButton.setBounds(590, 680, 90, 35);
@@ -230,15 +232,53 @@ public class SignUp2 extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new SignUp2();
+        new SignUp2( random);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        if(e.getSource() == previousButton) {
+        if (e.getSource() == previousButton) {
             setVisible(false);
             new SignUp().setVisible(true);
+        } else if (e.getSource() == nextButton) {
+            int srandom = random;
+            String sreligion = (String) ReligionField.getSelectedItem();
+            String scategory = (String) CategoryField.getSelectedItem();
+            String sincome = (String) IncomeField.getSelectedItem();
+            String seducation = (String) EducationQualificationField.getSelectedItem();
+            String sOccupation = (String) OccupationField.getSelectedItem();
+
+            String sPan = PANCardField.getText();
+            String sAdhaar = AdhaarCardField.getText();
+            String seniorcitizen = null;
+            String existingcustomer = null;
+            if (seniorcitizenYes.isSelected()) {
+                seniorcitizen = seniorcitizenYes.getText();
+            } else if (seniorcitizenNo.isSelected()) {
+                seniorcitizen = seniorcitizenNo.getText();
+            }
+            if (existingcustomerYes.isSelected()) {
+                existingcustomer = existingcustomerYes.getText();
+            } else if (existingcustomerNO.isSelected()) {
+                existingcustomer = existingcustomerNO.getText();
+            }
+
+
+            try {
+                if(sAdhaar.equals("")||sPan.equals("")){
+                    JOptionPane.showMessageDialog(null, "Please Enter Required Fields");
+                }
+                else{
+                    DataBaseConnection dbc = new DataBaseConnection();
+                    String Query = "insert into signUpTwo values('"+srandom+"','"+sreligion+"','"+scategory+"','"+sincome+"'," +
+                            "'"+seducation+"','"+sOccupation+"','"+sPan+"','"+sAdhaar+"','"+seniorcitizen+"','"+existingcustomer+"')";
+                    dbc.st.executeUpdate(Query);
+                }
+
+            }  catch (Exception ee) {
+                System.out.println(ee.getMessage());
+            }
+
 
         }
 
