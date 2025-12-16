@@ -228,7 +228,7 @@ public class SignUp2 extends JFrame implements ActionListener {
         setLocation(600, 80);
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
-        setVisible(true);
+        //setVisible(true);
     }
 
     public static void main(String[] args) {
@@ -241,7 +241,6 @@ public class SignUp2 extends JFrame implements ActionListener {
             setVisible(false);
             new SignUp().setVisible(true);
         } else if (e.getSource() == nextButton) {
-            int srandom = random;
             String sreligion = (String) ReligionField.getSelectedItem();
             String scategory = (String) CategoryField.getSelectedItem();
             String sincome = (String) IncomeField.getSelectedItem();
@@ -269,9 +268,12 @@ public class SignUp2 extends JFrame implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Please Enter Required Fields");
                 } else {
                     DataBaseConnection dbc = new DataBaseConnection();
-                    String Query = "insert into signUpTwo values('" + srandom + "','" + sreligion + "','" + scategory + "','" + sincome + "'," +
+                    String Query = "insert into signUpTwo values('" + random + "','" + sreligion + "','" + scategory + "','" + sincome + "'," +
                             "'" + seducation + "','" + sOccupation + "','" + sPan + "','" + sAdhaar + "','" + seniorcitizen + "','" + existingcustomer + "')";
                     dbc.st.executeUpdate(Query);
+
+                    setVisible(false);
+                    new SignUp3(random).setVisible(true);
                 }
 
             } catch (Exception ee) {
