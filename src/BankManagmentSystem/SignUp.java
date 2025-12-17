@@ -250,7 +250,7 @@ public class SignUp extends JFrame implements ActionListener {
                 System.out.println(ee.getMessage());
             }
         } else if(e.getSource() == previousButton) {
-            setVisible(false);
+              setVisible(false);
             new Login().setVisible(true);
 
         }

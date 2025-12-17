@@ -233,13 +233,17 @@ public class SignUp3 extends JFrame implements ActionListener {
                     dbc.st.executeUpdate(query2);
                     AccountDetailsisSubmitted = true;
                     Submit.setEnabled(false);
-                    // setVisible(false);
+                    setVisible(false);
+                    new Deposit("").setVisible(true);
                 }
 
             } catch (Exception ee) {
                 System.out.println(ee.getMessage());
             }
 
+        } else if(e.getSource() == Cancel) {
+            setVisible(false);
+            new Login().setVisible(true);
         }
 
     }

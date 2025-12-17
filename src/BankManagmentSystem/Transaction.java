@@ -9,9 +9,11 @@ public class Transaction extends JFrame implements ActionListener {
 
     JButton depositButton, FastCash, PinChange, CashWithdrawl, MiniStatement, BalanceEnquiry, Exit;
     JLabel text;
+    String pin;
 
 
-    Transaction() {
+    Transaction(String pin) {
+        this.pin = pin;
         setLayout(null);
 
         ImageIcon image1 = new ImageIcon(ClassLoader.getSystemResource("icons/BmsProjectInterface.jpg"));
@@ -32,6 +34,7 @@ public class Transaction extends JFrame implements ActionListener {
         depositButton.setFont(new Font("Raleway", Font.BOLD, 14));
         depositButton.setForeground(Color.BLACK);
         depositButton.setBackground(Color.WHITE);
+        depositButton.addActionListener(this);
         imageLabel.add(depositButton);
 
 
@@ -40,6 +43,7 @@ public class Transaction extends JFrame implements ActionListener {
         FastCash.setFont(new Font("Raleway", Font.BOLD, 14));
         FastCash.setForeground(Color.BLACK);
         FastCash.setBackground(Color.WHITE);
+        FastCash.addActionListener(this);
         imageLabel.add(FastCash);
 
 
@@ -48,6 +52,7 @@ public class Transaction extends JFrame implements ActionListener {
         PinChange.setFont(new Font("Raleway", Font.BOLD, 14));
         PinChange.setForeground(Color.BLACK);
         PinChange.setBackground(Color.WHITE);
+        PinChange.addActionListener(this);
         imageLabel.add(PinChange);
 
 
@@ -57,6 +62,7 @@ public class Transaction extends JFrame implements ActionListener {
         CashWithdrawl.setFont(new Font("Raleway", Font.BOLD, 14));
         CashWithdrawl.setForeground(Color.BLACK);
         CashWithdrawl.setBackground(Color.WHITE);
+        CashWithdrawl.addActionListener(this);
         imageLabel.add(CashWithdrawl);
 
         MiniStatement = new JButton("Mini Statement");
@@ -64,6 +70,7 @@ public class Transaction extends JFrame implements ActionListener {
         MiniStatement.setFont(new Font("Raleway", Font.BOLD, 14));
         MiniStatement.setForeground(Color.BLACK);
         MiniStatement.setBackground(Color.WHITE);
+        MiniStatement.addActionListener(this);
         imageLabel.add(MiniStatement);
 
 
@@ -72,6 +79,7 @@ public class Transaction extends JFrame implements ActionListener {
         BalanceEnquiry.setFont(new Font("Raleway", Font.BOLD, 14));
         BalanceEnquiry.setForeground(Color.BLACK);
         BalanceEnquiry.setBackground(Color.WHITE);
+        BalanceEnquiry.addActionListener(this);
         imageLabel.add(BalanceEnquiry);
 
         Exit = new JButton("Exit");
@@ -85,18 +93,24 @@ public class Transaction extends JFrame implements ActionListener {
 
         setLocation(500,0);
         setSize(900, 870);
-        setVisible(true);
+
     }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == Exit) {
             System.exit(0);
+        } else if(e.getSource() == depositButton) {
+            setVisible(false);
+            new Deposit(pin).setVisible(true);
+        } else if (e.getSource() == CashWithdrawl ) {
+            setVisible(false);
+            new Withdrawl(pin).setVisible(true);
         }
     }
 
 
     public static void main(String[] args) {
-        new Transaction();
+        new Transaction("");
     }
 
 }
