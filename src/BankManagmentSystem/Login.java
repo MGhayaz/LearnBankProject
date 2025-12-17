@@ -3,13 +3,15 @@ package BankManagmentSystem;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.*;
 
 public class Login extends JFrame implements ActionListener {
 
 
-    JButton Clear , SignIn, signUp;
+    JButton Clear, SignIn, signUp;
     JTextField cardFeild;
     JPasswordField pinFeild;
+
     public Login() {
         setLayout(null);
         // Frame Title
@@ -34,7 +36,7 @@ public class Login extends JFrame implements ActionListener {
         CardNo.setFont(new Font("Raleway", Font.BOLD, 18));
         add(CardNo);
 
-         cardFeild = new JTextField();
+        cardFeild = new JTextField();
         cardFeild.setBounds(260, 180, 180, 18);
         cardFeild.setFont(new Font("Raleway", Font.BOLD, 13));
         add(cardFeild);
@@ -45,25 +47,25 @@ public class Login extends JFrame implements ActionListener {
         pin.setFont(new Font("Raleway", Font.BOLD, 18));
         add(pin);
 
-         pinFeild = new JPasswordField();
+        pinFeild = new JPasswordField();
         pinFeild.setBounds(260, 220, 180, 18);
         add(pinFeild);
 
-         Clear = new JButton("CLEAR");
+        Clear = new JButton("CLEAR");
         Clear.setBounds(260, 260, 80, 25);
         Clear.setBackground(Color.BLACK);
         Clear.setForeground(Color.WHITE);
         Clear.addActionListener(this);
         add(Clear);
 
-         SignIn = new JButton("SIGN IN");
+        SignIn = new JButton("SIGN IN");
         SignIn.setBounds(360, 260, 80, 25);
         SignIn.setBackground(Color.BLACK);
         SignIn.setForeground(Color.WHITE);
         SignIn.addActionListener(this);
         add(SignIn);
 
-         signUp = new JButton("SIGN UP");
+        signUp = new JButton("SIGN UP");
         signUp.setBounds(260, 300, 180, 25);
         signUp.setBackground(Color.BLACK);
         signUp.setForeground(Color.WHITE);
@@ -80,15 +82,39 @@ public class Login extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == Clear) {
+        if (e.getSource() == Clear) {
             cardFeild.setText("");
             pinFeild.setText("");
-        } else if (e.getSource() == signUp){
+        } else if (e.getSource() == signUp) {
             setVisible(false);
             new SignUp().setVisible(true);
+        } else if (e.getSource() == SignIn) {
 
-        }
-        else if (e.getSource() == SignIn){
+            String cardNumber = cardFeild.getText().trim();
+            String pin = pinFeild.getText().trim();
+
+            if (cardNumber.isEmpty() || pin.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please enter Card Number and Pin");
+                return;
+            }
+
+            String query1 =
+                    "select * from Login where cardNumber='" + cardNumber + "' and pinNumber='" + pin + "'";
+
+            try {
+                DataBaseConnection dbc = new DataBaseConnection();
+                ResultSet rs = dbc.st.executeQuery(query1);
+
+                if (rs.next()) {
+                    setVisible(false);
+                    new Transaction().setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid Card Number or Pin");
+                }
+
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
 
 
         }

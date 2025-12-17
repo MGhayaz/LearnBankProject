@@ -11,6 +11,7 @@ public class SignUp3 extends JFrame implements ActionListener {
     JRadioButton SavingAccount, FixedDepositAccount, CurrentAccount, RecurringDepositAccount;
     JCheckBox ATMCard, InternetBanking, MobileBanking, EmailSMSAlerts, EStatement, ChequeBook, Declaration;
     JButton Submit, Cancel;
+    boolean AccountDetailsisSubmitted = false;
     static int random;
 
     SignUp3(int random) {
@@ -178,6 +179,11 @@ public class SignUp3 extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == Submit) {
+            if (AccountDetailsisSubmitted){
+                JOptionPane.showMessageDialog(null, "Account Already Created");
+                return;
+            }
+
             String acType = null;
             if (SavingAccount.isSelected()) {
                 acType = SavingAccount.getText();
@@ -219,10 +225,14 @@ public class SignUp3 extends JFrame implements ActionListener {
                 } else {
                     DataBaseConnection dbc = new DataBaseConnection();
                     String query1 = "insert into signUpthree values(" + random + ",'" + acType + "','" + cardNumber + "','" + pinNumber + "','" + facilty + "')";
-
+                    String query2 = "insert into Login values(" + random + ",'" + cardNumber + "','" + pinNumber + "')";
+                    JOptionPane.showMessageDialog(null, "Your account has been created\n Your Card Number: " + cardNumber + "\nAnd PIn is: "+pinNumber);
 
 
                     dbc.st.executeUpdate(query1);
+                    dbc.st.executeUpdate(query2);
+                    AccountDetailsisSubmitted = true;
+                    Submit.setEnabled(false);
                     // setVisible(false);
                 }
 
