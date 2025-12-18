@@ -28,7 +28,7 @@ public class Withdrawl extends JFrame implements ActionListener {
         textLabel = new JLabel("Enter the amount you want to Withdrawl");
         textLabel.setBounds(190,320,290,25);
         textLabel.setForeground(Color.WHITE);
-        textLabel.setFont(new Font("Raleway",Font.BOLD,16));
+        textLabel.setFont(new Font("Raleway",Font.BOLD,13));
         imageLabel.add(textLabel);
 
 
