@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2c3962a-6260-4cd4-821e-777839587866" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/BankManagmentSystem/PinChange.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BankManagmentSystem/BalanceEnquiry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BankManagmentSystem/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankManagmentSystem/Transaction.java" afterDir="false" />
     </list>
@@ -31,6 +31,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.BalanceEnquiry.executor": "Run",
     "Application.Deposit.executor": "Run",
     "Application.FastCash.executor": "Debug",
     "Application.Login.executor": "Run",
