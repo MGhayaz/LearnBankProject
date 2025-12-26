@@ -69,7 +69,7 @@ public class MiniStatement extends JFrame implements ActionListener {
         }catch (Exception ee) {
             System.out.println(ee.getMessage());
         }
-        LedgerLabel.setBounds(90, 220, 590, 235);
+        LedgerLabel.setBounds(90, 220, 790, 235);
 
 
 
